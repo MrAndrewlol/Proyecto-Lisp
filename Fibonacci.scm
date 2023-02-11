@@ -1,4 +1,3 @@
- #lang racket
 
 (define (fibonacci n)
   (if (<= n 2)
