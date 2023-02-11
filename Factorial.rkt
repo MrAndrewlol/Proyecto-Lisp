@@ -1,8 +1,8 @@
  #lang racket
 
-(define (factorial x)
-  (if (= x 0)
+(define (factorial n)
+  (if (= n 0)
 	  1
-	  (* x (factorial (- x 1)))))
+	  (* n (factorial (- n 1)))))
 
 (display (factorial 3))
