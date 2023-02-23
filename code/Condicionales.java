@@ -1,6 +1,6 @@
 
 public class Condicionales{
-      private String Condicion;
+    private String Condicion;
       
   
       public Condicionales(){
@@ -10,7 +10,7 @@ public class Condicionales{
   
   
   
-  public Condicionales(String owners, String numero, float dinero){
+  public Condicionales(String Condicion){
       this.Condicion = Condicion;
    
   }
@@ -27,7 +27,17 @@ public class Condicionales{
     public void setCondicion(String Condicion) {
         this.Condicion = Condicion;
     }
-  
+
+    public boolean siescondicional( String Condition){
+        boolean condicional = true;
+        if(Condicion.matches("[if, cond, and, or, else]")){
+            condicional = true;
+        }
+        
+        
+        return condicional;
+        
+    }
   
   
   }
