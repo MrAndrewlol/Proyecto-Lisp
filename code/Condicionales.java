@@ -1,3 +1,5 @@
+import java.util.concurrent.locks.Condition;
+
 public class Condicionales{
     private String Condicion;
       
@@ -29,8 +31,32 @@ public class Condicionales{
 
     public boolean siescondicional( String Condition){
         boolean condicional = true;
-        if(Condicion.matches("[if, cond, and, or, else]")){
+        if(Condition.matches("[cond, and, or, else]")){
             condicional = true;
+
+            switch(Condition){
+
+
+                case "cond":{
+                    
+                    break;
+                }
+
+                case "and":{
+
+                    break;
+                }
+
+                case "or":{
+
+                    break;
+                }
+
+                case "else":{
+
+                    break;
+                }
+            }
         }
         
         
