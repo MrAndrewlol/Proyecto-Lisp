@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch interpretacion",
+            "request": "launch",
+            "mainClass": "interpretacion",
+            "projectName": "Proyecto-Lisp_7970e200"
+        },
+        {
+            "type": "java",
             "name": "Launch Current File",
             "request": "launch",
             "mainClass": "${file}"
