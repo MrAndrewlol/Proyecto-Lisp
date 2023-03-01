@@ -4,13 +4,21 @@ import java.util.regex.Pattern;
 public class Interprete {
 
     private Declaracion declarar = new Declaracion();
+    private Aritmetica operaciones = new Aritmetica();
     
 
-    public void interpretar(String codigo) {
+    public String interpretar(String codigo) {
+        String ejecucion = "";
         if (evaluate("^[(][ ]*set![ ]+[a-z]+[ ]+[0-9]+[ ]*[)]$",codigo)){
             declarar.crearVariable(codigo);
-            System.out.println("Variable creada");
+            ejecucion = "Variable creada";
+        } else if (codigo.contains("+")) {
+            ejecucion = operaciones.operar(codigo);
+        } else {
+            System.out.println("error");
         }
+
+        return ejecucion;
     }
 
     public boolean evaluate(String regex, String codigo) {
