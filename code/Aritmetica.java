@@ -2,17 +2,31 @@ public class Aritmetica {
 
     Stack<String> stack = new Stack<String>();
 
+    int resultado;
+
+    public Aritmetica() {
+        resultado = 0;
+    }
+
+    public int getResultado() {
+        return this.resultado;
+    }
+
+    public void setResultado(int resultado) {
+        this.resultado = resultado;
+    }
+
+
     public String operar(String codigo) {
 
         codigo = new StringBuilder(codigo).reverse().toString();
         char[] chars = codigo.toCharArray();
-        StringBuilder sb = new StringBuilder();
         String s = "";
         String num = "";
-        int resultado = 0;
 
         for (char c : chars) {
-            if (Character.isDigit(c)){
+            int resultado = getResultado();
+            if (Character.isLetterOrDigit(c)){
                 s = String.valueOf(c);
                 num = s + num;
             } else if (c == ' ') {
@@ -26,11 +40,11 @@ public class Aritmetica {
                 if (c == '+') {
                     suma(stack, resultado);
                 } else if (c == '-') {
-
+                    resta(stack, resultado);
                 } else if (c == '*') {
-
+                    multiplicacion(stack, resultado);
                 } else if (c == '/'){
-
+                    division(stack, resultado);
                 }
             }
         }
@@ -39,7 +53,7 @@ public class Aritmetica {
         return codigo;
     }
     
-    public int suma(Stack<String> stack, int resultado) {
+    public void suma(Stack<String> stack, int resultado) {
         boolean ejecucion = true;
         while (ejecucion) {
             String cha = stack.peek();
@@ -52,19 +66,55 @@ public class Aritmetica {
             }
         }
         stack.pull();
-        return resultado;
+        setResultado(resultado);
     }
 
-    public int resta(Stack<String> stack, int resultado) {
-        return 0;
+    public void resta(Stack<String> stack, int resultado) {
+        boolean ejecucion = true;
+        while (ejecucion) {
+            String cha = stack.peek();
+            if (cha.matches("[0-999]*") && cha != ""){
+                int valor = Integer.valueOf(stack.peek());
+                stack.pull();
+                resultado = valor - resultado;
+            } else {
+                ejecucion = false;
+            }
+        }
+        stack.pull();
+        setResultado(resultado);
     }
 
-    public int multiplicacion(Stack<String> stack, int resultado) {
-        return 0;
+    public void multiplicacion(Stack<String> stack, int resultado) {
+        boolean ejecucion = true;
+        while (ejecucion) {
+            String cha = stack.peek();
+            if (cha.matches("[0-999]*")){
+                int valor = Integer.valueOf(stack.peek());
+                stack.pull();
+                resultado = valor * resultado;
+            } else {
+                ejecucion = false;
+            }
+        }
+        stack.pull();
+        setResultado(resultado);
     }
 
-    public int division(Stack<String> stack, int resultado) {
-        return 0;
+    public void division(Stack<String> stack, int resultado) {
+        boolean ejecucion = true;
+        while (ejecucion) {
+            String cha = stack.peek();
+            if (cha.matches("[0-999]*")){
+                int valor = Integer.valueOf(stack.peek());
+                stack.pull();
+                resultado = valor / resultado;
+            } else {
+                ejecucion = false;
+            }
+        }
+        stack.pull();
+        setResultado(resultado);
     }
 
     public int modulo(Stack<String> stack, int resultado) {

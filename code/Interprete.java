@@ -12,7 +12,7 @@ public class Interprete {
         if (evaluate("^[(][ ]*set![ ]+[a-z]+[ ]+[0-9]+[ ]*[)]$",codigo)){
             declarar.crearVariable(codigo);
             ejecucion = "Variable creada";
-        } else if (codigo.contains("+")) {
+        } else if (codigo.contains("+") || codigo.contains("-") || codigo.contains("*") || codigo.contains("/") || codigo.contains("%")) {
             ejecucion = operaciones.operar(codigo);
         } else {
             System.out.println("error");
