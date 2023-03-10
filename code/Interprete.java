@@ -5,6 +5,7 @@ public class Interprete {
 
     private Declaracion declarar = new Declaracion();
     private Aritmetica operaciones = new Aritmetica();
+    private Condicionales condiciones = new Condicionales();
     
 
     public String interpretar(String codigo) {
@@ -17,6 +18,32 @@ public class Interprete {
         } else {
             System.out.println("error");
         }
+
+        if (evaluate("^[(][ ]*cond[ ]+[a-z]+[ ]+[0-9]+[ ]*[)]$",codigo)){ //Declarar condicionales if
+            condiciones.siescondicional(codigo);
+
+        }
+        
+        
+        if (evaluate("^[(][ ]*and[ ]+[a-z]+[ ]+[0-9]+[ ]*[)]$",codigo)){ //Declarar and 
+
+        }
+
+        
+        if (evaluate("^[(][ ]*or[ ]+[a-z]+[ ]+[0-9]+[ ]*[)]$",codigo)){ //  si las dos funciones cumplen or statement
+
+        }
+
+        
+        if (evaluate("^[(][ ]*else[ ]+[a-z]+[ ]+[0-9]+[ ]*[)]$",codigo)){ // Si las funciones else por otro lado
+
+        }
+
+        
+        if (evaluate("^[(][ ]*defun[ ]+[a-z]+[ ]+[0-9]+[ ]*[)]$",codigo)){ // Para crear las funciones la mas dificil
+
+        }
+
 
         return ejecucion;
     }
