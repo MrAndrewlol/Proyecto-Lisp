@@ -6,15 +6,16 @@ public class Interprete {
     private Declaracion declarar = new Declaracion();
     private Aritmetica operaciones = new Aritmetica();
     private Condicionales condiciones = new Condicionales();
-    
+    private Variables valores = new Variables();
 
     public String interpretar(String codigo) {
         String ejecucion = "";
         if (evaluate("^[(][ ]*set![ ]+[a-z]+[ ]+[0-9]+[ ]*[)]$",codigo)){
-            declarar.crearVariable(codigo);
+            declarar.crearVariable(codigo, valores.getDatos());
             ejecucion = "Variable creada";
         } else if (codigo.contains("+") || codigo.contains("-") || codigo.contains("*") || codigo.contains("/") || codigo.contains("%")) {
-            ejecucion = operaciones.operar(codigo);
+            int operacion = operaciones.operar(codigo, valores.getDatos());
+            ejecucion = String.valueOf(operacion);
         } else {
             System.out.println("error");
         }

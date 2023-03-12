@@ -1,8 +1,10 @@
+import java.util.HashMap;
+
 public class Aritmetica {
 
     Stack<String> stack = new Stack<String>();
 
-    int resultado;
+    private int resultado;
 
     public Aritmetica() {
         resultado = 0;
@@ -17,7 +19,7 @@ public class Aritmetica {
     }
 
 
-    public String operar(String codigo) {
+    public int operar(String codigo, HashMap<String, Integer> map) {
 
         codigo = new StringBuilder(codigo).reverse().toString();
         char[] chars = codigo.toCharArray();
@@ -38,22 +40,22 @@ public class Aritmetica {
 
             } else {
                 if (c == '+') {
-                    suma(stack, resultado);
+                    suma(stack, resultado, map);
                 } else if (c == '-') {
-                    resta(stack, resultado);
+                    resta(stack, resultado, map);
                 } else if (c == '*') {
-                    multiplicacion(stack, resultado);
+                    multiplicacion(stack, resultado, map);
                 } else if (c == '/'){
-                    division(stack, resultado);
+                    division(stack, resultado, map);
                 }
             }
         }
         
 
-        return codigo;
+        return resultado;
     }
     
-    public void suma(Stack<String> stack, int resultado) {
+    public void suma(Stack<String> stack, int resultado, HashMap<String, Integer> map) {
         boolean ejecucion = true;
         while (ejecucion) {
             String cha = stack.peek();
@@ -61,6 +63,15 @@ public class Aritmetica {
                 int valor = Integer.valueOf(stack.peek());
                 stack.pull();
                 resultado = valor + resultado;
+            } else if (cha.matches("[a-z]*")){
+                for (String key : map.keySet()) {
+                    if (cha.equalsIgnoreCase(key)){
+                        int valor = map.get(key);
+                        stack.pull();
+                        resultado = valor + resultado;
+                    }
+                }
+                
             } else {
                 ejecucion = false;
             }
@@ -69,7 +80,7 @@ public class Aritmetica {
         setResultado(resultado);
     }
 
-    public void resta(Stack<String> stack, int resultado) {
+    public void resta(Stack<String> stack, int resultado, HashMap<String, Integer> map) {
         boolean ejecucion = true;
         while (ejecucion) {
             String cha = stack.peek();
@@ -85,7 +96,7 @@ public class Aritmetica {
         setResultado(resultado);
     }
 
-    public void multiplicacion(Stack<String> stack, int resultado) {
+    public void multiplicacion(Stack<String> stack, int resultado, HashMap<String, Integer> map) {
         boolean ejecucion = true;
         while (ejecucion) {
             String cha = stack.peek();
@@ -101,7 +112,7 @@ public class Aritmetica {
         setResultado(resultado);
     }
 
-    public void division(Stack<String> stack, int resultado) {
+    public void division(Stack<String> stack, int resultado, HashMap<String, Integer> map) {
         boolean ejecucion = true;
         while (ejecucion) {
             String cha = stack.peek();

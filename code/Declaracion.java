@@ -1,14 +1,8 @@
 import java.util.HashMap;
 
 public class Declaracion {
-    
-    public HashMap<String, Integer> variables;
 
-    public Declaracion() {
-        variables = new HashMap<String, Integer>();
-    }
-
-    public String crearVariable(String codigo) {
+    public String crearVariable(String codigo, HashMap<String, Integer> variables) {
 
         String [] linea = codigo.split(" ");
 
