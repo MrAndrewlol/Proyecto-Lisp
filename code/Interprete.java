@@ -4,7 +4,6 @@ import java.util.regex.Pattern;
 public class Interprete {
 
     private Declaracion declarar = new Declaracion();
-    private Aritmetica operaciones = new Aritmetica();
     private Condicionales condiciones = new Condicionales();
     private Variables valores = new Variables();
 
@@ -13,17 +12,24 @@ public class Interprete {
         if (evaluate("^[(][ ]*set![ ]+[a-z]+[ ]+[0-9]+[ ]*[)]$",codigo)){
             declarar.crearVariable(codigo, valores.getDatos());
             ejecucion = "Variable creada";
-        } else if (codigo.contains("+") || codigo.contains("-") || codigo.contains("*") || codigo.contains("/") || codigo.contains("%")) {
+        }else if (evaluate("^[(][ ]*[+,-,/,*]*[ ]*", codigo)){
+            Aritmetica operaciones = new Aritmetica();
             int operacion = operaciones.operar(codigo, valores.getDatos());
             ejecucion = String.valueOf(operacion);
-        } else {
+        } else if (evaluate("^[(][ ]*print", codigo)){
+            if (codigo != null || codigo.length() != 0) {
+                codigo = codigo.substring(1);
+                codigo = codigo.substring(codigo.length());
+                System.out.println(interpretar(codigo));
+            }
+        }else {
             System.out.println("error");
         }
 
         if (evaluate("^[(][ ]*cond[ ]+[a-z]+[ ]+[0-9]+[ ]*[)]$",codigo)){ //Declarar condicionales if
             condiciones.siescondicional(codigo);
 
-        }
+        } 
         
         
         if (evaluate("^[(][ ]*and[ ]+[a-z]+[ ]+[0-9]+[ ]*[)]$",codigo)){ //Declarar and 
