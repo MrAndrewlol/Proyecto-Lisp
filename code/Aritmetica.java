@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
 import java.util.HashMap;
-=======
-
->>>>>>> Stashed changes
 
 public class Aritmetica {
 
