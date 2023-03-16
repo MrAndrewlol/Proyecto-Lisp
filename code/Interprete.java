@@ -29,8 +29,11 @@ public class Interprete {
             System.out.println("error");
         }
 
-        if (evaluate("^[(][ ]*cond[ ]+[a-z]+[ ]+[0-9]+[ ]*[)]$",codigo)){ //Declarar condicionales if
-            
+        if (evaluate("^[(][ ]*cond[ (]+[<]+[0-9]+[ ]+[0-9]+[ ]*[))]$",codigo) || evaluate("^[(][ ]*cond[ ]+[(]+[>]+[ ]+[0-9]+[ ]+[0-9]+[)]+[ ]*[)]$",codigo) || evaluate("^[(][ ]*cond[ (]+[<=]+[0-9]+[ ]+[0-9]+[ ]*[)]$",codigo) || evaluate("^[(][ ]*cond[ (]+[>=]+[0-9]+[ ]+[0-9]+[ ]*[)]$",codigo) || evaluate("^[(][ ]*cond[ (]+[equal]+[0-9]+[ ]+[0-9]+[ ]*[)]$",codigo)){ //Declarar condicionales if
+
+
+            if (condiciones.siescondicional(codigo, valores.getDatos()) == true){
+            }
 
         }
         
