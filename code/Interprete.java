@@ -29,28 +29,38 @@ public class Interprete {
             System.out.println("error");
         }
 
-        if (evaluate("^[(][ ]*cond[ ]+[a-z]+[ ]+[0-9]+[ ]*[)]$",codigo)){ //Declarar condicionales if
-            condiciones.siescondicional(codigo);
+        if (evaluate("^[(][ ]*cond[ (]+[<]+[a-z]+[ ]+[0-9]+[ ][))]$",codigo) || evaluate("^[(][ ]cond[ ]+[(]+[>]+[ ]+[a-z]+[ ]+[0-9]+[)]+[ ][)]$",codigo) || evaluate("^[(][ ]cond[ (]+[<=]+[a-z]+[ ]+[0-9]+[ ][)]$",codigo) || evaluate("^[(][ ]cond[ (]+[>=]+[a-z]+[ ]+[0-9]+[ ][)]$",codigo) || evaluate("^[(][ ]cond[ (]+[equal]+[a-z]+[ ]+[0-9]+[ ][)]$",codigo)){ //Declarar condicionales if
+            System.out.println("Hecho");
+           
+            if (condiciones.siescondicional(codigo, valores.getDatos() ) == true){
+                
+            }
 
-        } 
+        }
+        //numeros
+        if (evaluate("^[(][ ]*cond[ ]*[(]+[>]+[ ]*[0-9]+[ ]+[0-9]+[ ]*[))]",codigo) || evaluate("^[(][ ]*cond[ ]*[(]+[<]+[ ][0-9]+[ ]+[0-9]+[ ][))]$",codigo) || evaluate("^[(][ ]cond[ (]+[<=]+[0-9]+[ ]+[0-9]+[ ][)]$",codigo) || evaluate("^[(][ ]cond[ (]+[>=]+[0-9]+[ ]+[0-9]+[ ][)]$",codigo) || evaluate("^[(][ ]cond[ (]+[equal]+[0-9]+[ ]+[0-9]+[ ][)]$",codigo)){ //Declarar condicionales if
         
-        
-        if (evaluate("^[(][ ]*and[ ]+[a-z]+[ ]+[0-9]+[ ]*[)]$",codigo)){ //Declarar and 
+            if (condiciones.siescondicional(codigo, valores.getDatos()) == true){
+            }
+
+        }
+
+        if (evaluate("^[(][ ]and[ ]+[a-z]+[ ]+[0-9]+[ ][)]$",codigo)){ //Declarar and 
 
         }
 
         
-        if (evaluate("^[(][ ]*or[ ]+[a-z]+[ ]+[0-9]+[ ]*[)]$",codigo)){ //  si las dos funciones cumplen or statement
+        if (evaluate("^[(][ ]or[ ]+[a-z]+[ ]+[0-9]+[ ][)]$",codigo)){ //  si las dos funciones cumplen or statement
 
         }
 
         
-        if (evaluate("^[(][ ]*else[ ]+[a-z]+[ ]+[0-9]+[ ]*[)]$",codigo)){ // Si las funciones else por otro lado
+        if (evaluate("^[(][ ]else[ ]+[a-z]+[ ]+[0-9]+[ ][)]$",codigo)){ // Si las funciones else por otro lado
 
         }
 
         
-        if (evaluate("^[(][ ]*defun[ ]+[a-z]+[ ]+[0-9]+[ ]*[)]$",codigo)){ // Para crear las funciones la mas dificil
+        if (evaluate("^[(][ ]defun[ ]+[a-z]+[ ]+[0-9]+[ ][)]$",codigo)){ // Para crear las funciones la mas dificil
 
         }
 
