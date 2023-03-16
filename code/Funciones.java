@@ -33,13 +33,15 @@ public class Funciones {
 
             code = code + codigo;
             
-            if (open.size() == close.size())
+            if (open.size() == close.size()){
                 ejecucion = false;
+                open.remove(0);
+            }
 
             else
                 codigo = in.nextLine();
         }
-        
+
         return "";
     }
 }
