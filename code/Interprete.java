@@ -13,18 +13,20 @@ public class Interprete {
         if (evaluate("^[(][ ]*set![ ]+[a-z]+[ ]+[0-9]+[ ]*[)]$",codigo)){
             declarar.crearVariable(codigo, valores.getDatos());
             ejecucion = "Variable creada";
-        }else if (evaluate("^[(][ ]*[+,-,/,*]*[ ]*", codigo)){
-            Aritmetica operaciones = new Aritmetica();
-            int operacion = operaciones.operar(codigo, valores.getDatos());
-            ejecucion = String.valueOf(operacion);
+        }else if (evaluate("^[(][ ]*[+,-,/,*]*[ ]*", codigo) && codigo.contains("+")){
+            if (codigo.contains("+") || codigo.contains("-") || codigo.contains("*") || codigo.contains("/")){
+                Aritmetica operaciones = new Aritmetica();
+                int operacion = operaciones.operar(codigo, valores.getDatos());
+                ejecucion = String.valueOf(operacion);
+            }
         } else if (evaluate("^[(][ ]*print", codigo)){
             if (codigo != null || codigo.length() != 0) {
                 codigo = codigo.substring(1);
                 codigo = codigo.substring(codigo.length());
                 System.out.println(interpretar(codigo));
             }
-        }else if (evaluate("^[(][ ]*define[ ]", codigo)){
-        
+        }else if (evaluate("^[(][ ]*define[ ]*[(]", codigo)){
+            funcion.crearFuncion(codigo, valores.getFunciones(), valores.getParamCod());
         }else {
             System.out.println("error");
         }

@@ -12,6 +12,22 @@ public class Variables {
         paramCod = new HashMap<ArrayList<String>,String>();
     }
 
+    public HashMap<String,HashMap<ArrayList<String>,String>> getFunciones() {
+        return this.funciones;
+    }
+
+    public void setFunciones(HashMap<String,HashMap<ArrayList<String>,String>> funciones) {
+        this.funciones = funciones;
+    }
+
+    public HashMap<ArrayList<String>,String> getParamCod() {
+        return this.paramCod;
+    }
+
+    public void setParamCod(HashMap<ArrayList<String>,String> paramCod) {
+        this.paramCod = paramCod;
+    }
+
     public HashMap<String,Integer> getDatos() {
         return this.datos;
     }

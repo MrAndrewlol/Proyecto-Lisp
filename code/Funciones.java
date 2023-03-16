@@ -3,7 +3,8 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class Funciones {
-    public String crearFuncion(String codigo, HashMap<String, HashMap<ArrayList<String>,String>> funciones, HashMap<ArrayList<String>,String> paramCod){
+
+    public void crearFuncion(String codigo, HashMap<String, HashMap<ArrayList<String>,String>> funciones, HashMap<ArrayList<String>,String> paramCod){
         Scanner in = new Scanner(System.in);
         boolean ejecucion = true;
         String code = "";
@@ -35,14 +36,12 @@ public class Funciones {
             
             if (open.size() == close.size()){
                 ejecucion = false;
-                open.remove(0);
+                paramCod.put(param, code);
+                funciones.put(funName, paramCod);
             }
 
             else
                 codigo = in.nextLine();
         }
-
-        return "";
-        //COMENTARIO
     }
 }
