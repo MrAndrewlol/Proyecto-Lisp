@@ -30,7 +30,7 @@ public class Interprete {
         }
 
         if (evaluate("^[(][ ]*cond[ ]+[a-z]+[ ]+[0-9]+[ ]*[)]$",codigo)){ //Declarar condicionales if
-            condiciones.siescondicional(codigo);
+            
 
         }
         
