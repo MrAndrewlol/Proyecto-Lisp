@@ -34,8 +34,10 @@ public class Aritmetica {
                 s = String.valueOf(c);
                 num = s + num;
             } else if (c == ' ') {
-                stack.push(num);
-                num = "";
+                if (num != "") {
+                    stack.push(num);
+                    num = "";
+                }
             } else if (c == ')') {
                 s = String.valueOf(c);
                 stack.push(s);

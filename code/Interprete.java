@@ -6,6 +6,7 @@ public class Interprete {
     private Declaracion declarar = new Declaracion();
     private Condicionales condiciones = new Condicionales();
     private Variables valores = new Variables();
+    private Funciones funcion = new Funciones();
 
     public String interpretar(String codigo) {
         String ejecucion = "";
@@ -22,6 +23,8 @@ public class Interprete {
                 codigo = codigo.substring(codigo.length());
                 System.out.println(interpretar(codigo));
             }
+        }else if (evaluate("^[(][ ]*define[ ]", codigo)){
+        
         }else {
             System.out.println("error");
         }
