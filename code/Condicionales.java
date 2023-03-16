@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 import java.util.LinkedList;
 import java.util.HashMap;
 
@@ -12,16 +13,34 @@ public class Condicionales{
         estackcondicion = new LinkedList<String>();
         listaString = new String[3];
         contador = 0;   
+=======
+import java.util.Stack;
+
+public class Condicionales{
+    private Stack<String> estackcondicion;
+      
+  
+    public Condicionales(){
+            Stack<String> estackcondicion = new Stack<String>();
+            
+>>>>>>> Stashed changes
       }
   
   
   
+<<<<<<< Updated upstream
 
     public Condicionales(LinkedList<String> estackcondicion, String[] listaString, int contador) {
         this.estackcondicion = estackcondicion;
         this.listaString = listaString;
         this.contador = contador;
     }
+=======
+  public Condicionales(Stack<String> estackcondicion){
+      this.estackcondicion = estackcondicion;
+   
+  }
+>>>>>>> Stashed changes
     
     
 
@@ -44,11 +63,19 @@ public class Condicionales{
     /** 
      * @return String
      */
+<<<<<<< Updated upstream
     public LinkedList<String> getCondicion() {
         return this.estackcondicion;
     }
 
     public void setCondicion(LinkedList<String> Condicion) {
+=======
+    public Stack<String> getCondicion() {
+        return this.estackcondicion;
+    }
+
+    public void setCondicion(Stack<String> Condicion) {
+>>>>>>> Stashed changes
         this.estackcondicion = Condicion;
     }
 
@@ -114,10 +141,26 @@ public class Condicionales{
         
 
 
+<<<<<<< Updated upstream
             
         return condicional;
         
     }
+=======
+                case "cond":{ //recursividad
+                    if(Condition.contains("cond")){
+                        Condition.split("cond");
+                        
+
+
+                    }
+                    
+
+
+                    
+                    break;
+                }
+>>>>>>> Stashed changes
 
     public boolean evaluarand(){
         String listaString2[];
