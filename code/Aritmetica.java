@@ -5,9 +5,11 @@ public class Aritmetica {
     Stack<String> stack = new Stack<String>();
 
     private int resultado;
+    private int result;
 
     public Aritmetica() {
         resultado = 0;
+        result = 1;
     }
 
     public int getResultado() {
@@ -103,13 +105,13 @@ public class Aritmetica {
             if (cha.matches("[0-999]*")){
                 int valor = Integer.valueOf(stack.peek());
                 stack.pull();
-                resultado = valor * resultado;
+                result = valor * result;
             } else {
                 ejecucion = false;
             }
         }
         stack.pull();
-        setResultado(resultado);
+        setResultado(result);
     }
 
     public void division(Stack<String> stack, int resultado, HashMap<String, Integer> map) {
@@ -119,13 +121,13 @@ public class Aritmetica {
             if (cha.matches("[0-999]*")){
                 int valor = Integer.valueOf(stack.peek());
                 stack.pull();
-                resultado = valor / resultado;
+                result = valor / result;
             } else {
                 ejecucion = false;
             }
         }
         stack.pull();
-        setResultado(resultado);
+        setResultado(result);
     }
 
     public int modulo(Stack<String> stack, int resultado) {
