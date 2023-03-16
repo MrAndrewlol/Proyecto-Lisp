@@ -39,6 +39,7 @@ public class Funciones {
             else
                 codigo = in.nextLine();
         }
+        
         return "";
     }
 }
