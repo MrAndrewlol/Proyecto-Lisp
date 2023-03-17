@@ -26,14 +26,26 @@ public class Condicionales{
     
     
 
+    
+    /** 
+     * @return LinkedList<String>
+     */
     public LinkedList<String> getEstackcondicion() {
         return this.estackcondicion;
     }
 
+    
+    /** 
+     * @param estackcondicion
+     */
     public void setEstackcondicion(LinkedList<String> estackcondicion) {
         this.estackcondicion = estackcondicion;
     }
 
+    
+    /** 
+     * @return int
+     */
     public int getContador() {
         return this.contador;
     }

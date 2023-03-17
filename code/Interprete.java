@@ -11,6 +11,11 @@ public class Interprete {
     private Funciones funcion = new Funciones();
     private Predicados predicame = new Predicados();
 
+    
+    /** 
+     * @param codigo
+     * @return String
+     */
     public String interpretar(String codigo) {
         String ejecucion = "";
         if (evaluate("^[(][ ]*set![ ]+[a-z]+[ ]+[0-9]+[ ]*[)]$",codigo)){
@@ -89,6 +94,12 @@ public class Interprete {
         return ejecucion;
     }
 
+    
+    /** 
+     * @param regex
+     * @param codigo
+     * @return boolean
+     */
     public boolean evaluate(String regex, String codigo) {
         Pattern pattern = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
         

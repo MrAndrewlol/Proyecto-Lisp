@@ -4,6 +4,12 @@ import java.util.HashMap;
 public class Declaracion {
     ArrayList<String> set = new ArrayList<String>();
 
+    
+    /** 
+     * @param codigo
+     * @param variables
+     * @return String
+     */
     public String crearVariable(String codigo, HashMap<String, Integer> variables) {
 
         String [] linea = codigo.replaceAll("()", "").split(" ");

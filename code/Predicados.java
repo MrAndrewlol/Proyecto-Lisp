@@ -1,5 +1,10 @@
 public class Predicados {
     
+    
+    /** 
+     * @param codigo
+     * @return String
+     */
     public String hacerPredicado(String codigo) {
         String valor = "";
         

@@ -5,6 +5,10 @@ import java.util.Scanner; // Import the Scanner class to read text files
 
 public class interpretacion<T> {
 
+    
+    /** 
+     * @param args
+     */
     public static void main(String[] args) {
 
         String rpa = "";

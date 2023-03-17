@@ -7,14 +7,26 @@ public class Stack<T> {
         miStack = new ArrayList<T>();
     }
 
+    
+    /** 
+     * @return int
+     */
     public int count() {
         return miStack.size();
     }
 
+    
+    /** 
+     * @return boolean
+     */
     public boolean isEmpty(){
         return miStack.isEmpty();
     }
 
+    
+    /** 
+     * @param value
+     */
     public void push(T value) {
         miStack.add(0, value);
     }

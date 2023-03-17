@@ -4,6 +4,14 @@ import java.util.Scanner;
 
 public class Funciones {
 
+    
+    /** 
+     * @param codigo
+     * @param HashMap
+     * @param funciones
+     * @param HashMap<ArrayList<String>
+     * @param paramCod
+     */
     public void crearFuncion(String codigo, HashMap<String, HashMap<ArrayList<String>,String>> funciones, HashMap<ArrayList<String>,String> paramCod){
         Scanner in = new Scanner(System.in);
         boolean ejecucion = true;
