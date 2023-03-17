@@ -65,6 +65,8 @@ public class Interprete {
                 int operacion = operaciones.operar(codigo, valores.getDatos());
                 ejecucion = String.valueOf(operacion);
 
+        }else if (evaluate("^[(][ ]*[atom,equal,list][ ]+", codigo)){
+
         }else {
             System.out.println("error");
         }

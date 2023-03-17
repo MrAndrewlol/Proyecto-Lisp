@@ -131,9 +131,4 @@ public class Aritmetica {
         stack.pull();
         setResultado(result);
     }
-
-    public int modulo(Stack<String> stack, int resultado) {
-        return 0;
-    }
-
 }
