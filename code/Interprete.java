@@ -60,6 +60,11 @@ public class Interprete {
             
             
 
+        } else if (evaluate("^[(][ ]*[-][ ]*", codigo)){
+            Aritmetica operaciones = new Aritmetica();
+                int operacion = operaciones.operar(codigo, valores.getDatos());
+                ejecucion = String.valueOf(operacion);
+
         }else {
             System.out.println("error");
         }
