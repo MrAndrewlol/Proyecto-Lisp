@@ -27,8 +27,7 @@ public class Interprete {
                 codigo = codigo.substring(1,codigo.length()-1);
                 codigo = codigo.replace("display", "");
                 codigo = codigo.replace("\"","" ).trim();
-                //codigo = codigo.substring(codigo.length());
-                System.out.println(codigo);
+                System.out.println(interpretar(codigo));
             }
         }else if (evaluate("^[(][ ]*define[ ]*[(]", codigo)){
 

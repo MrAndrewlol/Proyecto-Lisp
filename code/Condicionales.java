@@ -69,7 +69,7 @@ public class Condicionales{
         
        
             condicional = true;//recursividad
-        if(Condition.contains("cond") || Condition.contains("and") || Condition.contains("cond") ||getContador() > 1){
+            if(Condition.contains("cond") || Condition.contains("and") || Condition.contains("or") ||getContador() > 1){
                 for (int i = 0; i < Condition.length(); i++) {
                     if (Condition.charAt(i) == parentesis) {
                        setContador(contador++);  

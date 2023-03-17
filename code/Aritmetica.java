@@ -21,6 +21,23 @@ public class Aritmetica {
     }
 
 
+    public Stack<String> getStack() {
+        return this.stack;
+    }
+
+    public void setStack(Stack<String> stack) {
+        this.stack = stack;
+    }
+
+    public int getResult() {
+        return this.result;
+    }
+
+    public void setResult(int result) {
+        this.result = result;
+    }
+
+
     public int operar(String codigo, HashMap<String, Integer> map) {
 
         codigo = new StringBuilder(codigo).reverse().toString();
@@ -82,6 +99,8 @@ public class Aritmetica {
         }
         stack.pull();
         setResultado(resultado);
+        setResult(resultado);
+        
     }
 
     public void resta(Stack<String> stack, int resultado, HashMap<String, Integer> map) {
@@ -98,6 +117,7 @@ public class Aritmetica {
         }
         stack.pull();
         setResultado(resultado);
+        setResult(resultado);
     }
 
     public void multiplicacion(Stack<String> stack, int resultado, HashMap<String, Integer> map) {
@@ -114,6 +134,7 @@ public class Aritmetica {
         }
         stack.pull();
         setResultado(result);
+        setResult(result);
     }
 
     public void division(Stack<String> stack, int resultado, HashMap<String, Integer> map) {
@@ -130,5 +151,6 @@ public class Aritmetica {
         }
         stack.pull();
         setResultado(result);
+        setResult(result);
     }
 }

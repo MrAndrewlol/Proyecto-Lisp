@@ -27,11 +27,7 @@ public class interpretacion<T> {
                         terminar = false;
                     else
                         interprete.interpretar(rpa);
-
                 }
-        
-
-
                 break;
             }
 
