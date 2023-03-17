@@ -11,6 +11,7 @@ public class interpretacion<T> {
         while(rpa != "Terminar"){
             System.out.println("Ingrese la linea de código: ");
             rpa = teclado.nextLine();
+            
             System.out.println(interprete.interpretar(rpa));
         }
     }

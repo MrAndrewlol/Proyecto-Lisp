@@ -176,7 +176,7 @@ public class Condicionales{
             listaString2 = valoreslogivcos.split(" ", 3);
             listaString2[0] = listaString2[0].replace("(", "");
             listaString2[listaString2.length-1] = listaString2[listaString2.length-1].replace(")", "");
-            if(Integer.valueOf(listaString2[1]) > Integer.valueOf(listaString2[2])){
+            if(Integer.valueOf(listaString2[1]) <= Integer.valueOf(listaString2[2])){
                 resultado = true;
                 System.out.println("Verdadero");
             }
@@ -191,7 +191,7 @@ public class Condicionales{
             listaString2 = valoreslogivcos.split(" ", 3);
             listaString2[0] = listaString2[0].replace("(", "");
             listaString2[listaString2.length-1] = listaString2[listaString2.length-1].replace(")", "");
-            if(Integer.valueOf(listaString2[1]) > Integer.valueOf(listaString2[2])){
+            if(Integer.valueOf(listaString2[1]) < Integer.valueOf(listaString2[2])){
                 resultado = true;
                 System.out.println("Verdadero");
             }
@@ -205,7 +205,7 @@ public class Condicionales{
             listaString2 = valoreslogivcos.split(" ", 3);
             listaString2[0] = listaString2[0].replace("(", "");
             listaString2[listaString2.length-1] = listaString2[listaString2.length-1].replace(")", "");
-            if(Integer.valueOf(listaString2[1]) > Integer.valueOf(listaString2[2])){
+            if(Integer.valueOf(listaString2[1]) >= Integer.valueOf(listaString2[2])){
                 resultado = true;
                 System.out.println("Verdadero");
             }
@@ -231,21 +231,9 @@ public class Condicionales{
     }
 
         
-        if (valoreslogivcos.contains("EQ")){
-            if (valoreslogivcos.contains("EQ")){ // (== 3 3) 
-                listaString2 = valoreslogivcos.split(" ", 2);
-                listaString2[0] = listaString2[0].replace("(", "");
-                listaString2[listaString2.length-1] = listaString2[listaString2.length-1].replace(")", "");
-                if(Integer.valueOf(listaString2[1]) == Integer.valueOf(listaString2[2])){
-                 resultado = true;
-                }
-                else{
-                    resultado = false;
-                }
+        
 
-        }
-
-        } 
+        
         return resultado;
         
     }
