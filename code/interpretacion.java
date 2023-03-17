@@ -30,8 +30,8 @@ public class interpretacion<T> {
 
             case 2:{
                 System.out.println("Ingrese la ruta del archivo ej C:\\ejemplos\\example1.txt");
-                Scanner in = new Scanner(System.in);
-                String fpath = in.nextLine();
+                
+                String fpath = teclado.nextLine();
                 
                 try {
                 File myObj = new File(fpath);
@@ -47,8 +47,7 @@ public class interpretacion<T> {
                 System.out.println("An error occurred.");
                 e.printStackTrace();
                 }
-  }
-}
+  
 
 
 
