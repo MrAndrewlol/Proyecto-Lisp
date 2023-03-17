@@ -32,7 +32,7 @@ public class Funciones {
                     close.add(c);
             }
 
-            code = code + codigo;
+            code = code + codigo + "|";
             
             if (open.size() == close.size()){
                 ejecucion = false;
