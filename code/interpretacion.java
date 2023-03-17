@@ -11,8 +11,9 @@ public class interpretacion<T> {
         int mresp;
         Scanner teclado = new Scanner(System.in);
         Interprete interprete = new Interprete(); 
-        System.out.println("Bienvenido a SCHELISP Exist\npor favor elegir la opcion que desea? 1.Ingresar una linea de codigo\n2.Ingresar formato txt su programa ");
+        System.out.println("Bienvenido a SCHELISP Exist\npor favor elegir la opcion que desea?\n1.Ingresar una linea de codigo\n2.Ingresar formato txt su programa\n ENTER PARA SALIR ");
         mresp = teclado.nextInt();
+        teclado.nextLine();
 
         switch(mresp){
             case 1: {
