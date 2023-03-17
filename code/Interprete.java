@@ -13,7 +13,7 @@ public class Interprete {
 
     public String interpretar(String codigo) {
         String ejecucion = "";
-        if (evaluate("^[(][ ]*set![ ]+[a-z]+[ ]+[0-9]+[ ]*[)]$",codigo)){
+        if (evaluate("^[(][ ]*set![ ]+[a-z]+[ ]+[0-9]+[ ]*[)]$",codigo) ||evaluate("^[(][ ]*define[ ]+[a-z]+[ ]+[0-9]+[ ]*[)]$",codigo) ){
             declarar.crearVariable(codigo, valores.getDatos());
             ejecucion = "Variable creada";
         }else if (evaluate("^[(][ ]*[+,-,/,*][ ]*", codigo)){
@@ -25,9 +25,10 @@ public class Interprete {
         } else if (evaluate("^[(][ ]*display", codigo)){
             if (codigo != null || codigo.length() != 0) {
                 codigo = codigo.substring(1,codigo.length()-1);
-                codigo = codigo.replace("display", "").trim();
+                codigo = codigo.replace("display", "");
+                codigo = codigo.replace("\"","" ).trim();
                 //codigo = codigo.substring(codigo.length());
-                System.out.println(interpretar(codigo));
+                System.out.println(codigo);
             }
         }else if (evaluate("^[(][ ]*define[ ]*[(]", codigo)){
 

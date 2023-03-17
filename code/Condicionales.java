@@ -94,7 +94,7 @@ public class Condicionales{
                 
                 estackcondicion.push(listaString[0]); //Solo mete los datos a la pila
                 for (String i : variables.keySet()) {
-            System.out.println("key: " + i + " value: " + variables.get(i));
+            
             
             if (Condition.contains(i)){
                 Condition.replace(i, String.valueOf(variables.get(i)));
@@ -178,11 +178,11 @@ public class Condicionales{
             listaString2[listaString2.length-1] = listaString2[listaString2.length-1].replace(")", "");
             if(Integer.valueOf(listaString2[1]) <= Integer.valueOf(listaString2[2])){
                 resultado = true;
-                System.out.println("Verdadero");
+                System.out.println("Verdadero es mayor que " + listaString2[1]);
             }
             else{
                 resultado = false;
-                System.out.println("Falso");
+                System.out.println("Falso es menor que" + listaString2[1]);
             }
     }
         
@@ -193,11 +193,11 @@ public class Condicionales{
             listaString2[listaString2.length-1] = listaString2[listaString2.length-1].replace(")", "");
             if(Integer.valueOf(listaString2[1]) < Integer.valueOf(listaString2[2])){
                 resultado = true;
-                System.out.println("Verdadero");
+                System.out.println("Verdadero es mayor que " + listaString2[1]);
             }
             else{
                 resultado = false;
-                System.out.println("Falso");
+                System.out.println("Falso es menor que" + listaString2[1]);
             }
     }
         if (valoreslogivcos.contains(">=")){ // (<= 3 3) 
@@ -207,11 +207,11 @@ public class Condicionales{
             listaString2[listaString2.length-1] = listaString2[listaString2.length-1].replace(")", "");
             if(Integer.valueOf(listaString2[1]) >= Integer.valueOf(listaString2[2])){
                 resultado = true;
-                System.out.println("Verdadero");
+                System.out.println("Verdadero es mayor que " + listaString2[1]);
             }
             else{
                 resultado = false;
-                System.out.println("Falso");
+                System.out.println("Falso es menor que" + listaString2[1]);
             }
     }
         
@@ -222,11 +222,11 @@ public class Condicionales{
             listaString2[listaString2.length-1] = listaString2[listaString2.length-1].replace(")", "");
             if(Integer.valueOf(listaString2[1]) > Integer.valueOf(listaString2[2])){
                 resultado = true;
-                System.out.println("Verdadero");
+                System.out.println("Verdadero es mayor que " + listaString2[1]);
             }
             else{
                 resultado = false;
-                System.out.println("Falso");
+                System.out.println("Falso es menor que" + listaString2[1]);
             }
     }
 
