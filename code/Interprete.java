@@ -13,7 +13,7 @@ public class Interprete {
 
     public String interpretar(String codigo) {
         String ejecucion = "";
-        if (evaluate("^[(][ ]*set![ ]+[a-z]+[ ]+[0-9]+[ ]*[)]$",codigo) ||evaluate("^[(][ ]*define[ ]+[a-z]+[ ]+[0-9]+[ ]*[)]$",codigo) ){
+        if (evaluate("^[(][ ]*set![ ]+[a-z]+[ ]+[0-9]+[ ]*[)]$",codigo)){
             declarar.crearVariable(codigo, valores.getDatos());
             ejecucion = "Variable creada";
         }else if (evaluate("^[(][ ]*[+,-,/,*][ ]*", codigo)){
@@ -84,7 +84,7 @@ public class Interprete {
                 ejecucion = String.valueOf(operacion);
 
         }else {
-            System.out.println("error");
+            System.out.println("ERROR: LINEA DE CODIGO IRRECONOCIBLE");
         }
 
         return ejecucion;

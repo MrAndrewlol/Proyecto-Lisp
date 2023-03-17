@@ -9,18 +9,23 @@ public class interpretacion<T> {
 
         String rpa = "";
         int mresp;
+        boolean terminar = true;
         Scanner teclado = new Scanner(System.in);
         Interprete interprete = new Interprete(); 
-        System.out.println("Bienvenido a SCHELISP Exist\npor favor elegir la opcion que desea? 1.Ingresar una linea de codigo\n2.Ingresar formato txt su programa ");
+        System.out.println("Bienvenido a SCHELISP Exist\nElegir la opción que desea para el intérprete: \n\n1. Programación por terminal\n2.Programación mediante archivo txt");
         mresp = teclado.nextInt();
+        teclado.nextLine();
 
         switch(mresp){
             case 1: {
-                while(rpa != "Terminar"){
-                    System.out.println("Ingrese la linea de código: ");
+                System.out.println("Ingrese su código (Para guardarlo escriba save)\n");
+                while(terminar){
                     rpa = teclado.nextLine();
-                    
-                    System.out.println(interprete.interpretar(rpa));
+                    if (rpa.equals("save"))
+                        terminar = false;
+                    else
+                        interprete.interpretar(rpa);
+
                 }
         
 
