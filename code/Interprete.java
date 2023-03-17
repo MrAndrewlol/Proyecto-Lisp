@@ -9,6 +9,7 @@ public class Interprete {
     private Condicionales condiciones = new Condicionales();
     private Variables valores = new Variables();
     private Funciones funcion = new Funciones();
+    private Predicados predicame = new Predicados();
 
     public String interpretar(String codigo) {
         String ejecucion = "";
@@ -32,7 +33,8 @@ public class Interprete {
 
             funcion.crearFuncion(codigo, valores.getFunciones(), valores.getParamCod());
 
-        }else if (evaluate("^[(][ ]*[atom,equal,list][ ]+", codigo)){
+        }else if (evaluate("^[(][ ]*[atom,equal,list]*[ ]+", codigo)){
+            System.out.println(predicame.hacerPredicado(codigo));
         
         }
         else if (evaluate("^[(][ ]*cond[ ]*[(]",codigo) || evaluate("^[(][ ]*and[ ]*[(]",codigo) || evaluate("^[(][ ]*or[ ]*[(]",codigo)){ //Declarar condicionales if
@@ -79,9 +81,6 @@ public class Interprete {
             Aritmetica operaciones = new Aritmetica();
                 int operacion = operaciones.operar(codigo, valores.getDatos());
                 ejecucion = String.valueOf(operacion);
-
-        }else if (evaluate("^[(][ ]*[atom,equal,list][ ]+", codigo)){
-            
 
         }else {
             System.out.println("error");

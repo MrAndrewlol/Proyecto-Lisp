@@ -2,27 +2,32 @@ public class Predicados {
     
     public String hacerPredicado(String codigo) {
         String valor = "";
-        codigo = codigo.replaceAll("(", "").replaceAll(")", "");
+        
+        
         if (codigo.contains("atom")){
-            codigo = codigo.replaceAll("atom", "").trim();
-            if (codigo.contains(" "))
-                valor = "#f";
+            String[] listastringatomd = codigo.split("atom");
+            String codigodelista = listastringatomd[0];
+  
+            if (codigodelista.contains("("))
+                valor = "#T";
             else 
-                valor = "#t";
+                valor = "NIL";
 
         } else if (codigo.contains("list")){
-            codigo = codigo.replaceAll("list", "").trim();
-            if (codigo.contains(" "))
-                valor = "#t";
+            String[] listastringatomd = codigo.split("list");
+            String codigodelista = listastringatomd[0];
+            
+            if (codigodelista.contains("("))
+                valor = "#T";
             else 
-                valor = "#f";
+                valor = "NIL";
         } else if (codigo.contains("equal")){
-            codigo = codigo.replaceAll("equal", "").trim();
-            String[] elements = codigo.split(" ");
-            if (elements[0].equals(elements[1])){
-                valor = "#t";
+            String[] listastringatomd = codigo.split(" ", 3);
+            String[] elements = listastringatomd;
+            if (elements[1].equals(elements[2].replace(")", ""))){
+                valor = "#T";
             } else {
-                valor = "#f";
+                valor = "NIL";
             }
         }
         return valor;
