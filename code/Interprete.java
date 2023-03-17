@@ -32,7 +32,23 @@ public class Interprete {
 
             funcion.crearFuncion(codigo, valores.getFunciones(), valores.getParamCod());
 
-        }else if (evaluate("^[(][ ]*[a-z]+", codigo)){
+        }else if (evaluate("^[(][ ]*[atom,equal,list][ ]+", codigo)){
+        
+        }
+        else if (evaluate("^[(][ ]*cond[ ]*[(]",codigo) || evaluate("^[(][ ]*and[ ]*[(]",codigo) || evaluate("^[(][ ]*or[ ]*[(]",codigo)){ //Declarar condicionales if
+           
+            if (condiciones.siescondicional(codigo, valores.getDatos() ) == true){
+
+            }
+
+        }else if (evaluate("^[(][ ]*QUOTE", codigo)){
+            if (codigo.contains("QUOTE")){
+                System.out.println( "'" + codigo + "'");
+
+            }
+            
+        }
+        else if (evaluate("^[(][ ]*[a-z]+", codigo)){
             String code = "";
             codigo = codigo.replace("(", "").replace(")", "");
             String[] FuncionPartes = codigo.split(" ");
@@ -47,8 +63,7 @@ public class Interprete {
                             j++;
                         }
                     }
-
-                    
+ 
                 }
             }
 
@@ -66,39 +81,10 @@ public class Interprete {
                 ejecucion = String.valueOf(operacion);
 
         }else if (evaluate("^[(][ ]*[atom,equal,list][ ]+", codigo)){
+            
 
         }else {
             System.out.println("error");
-        }
-
-        if (evaluate("^[(][ ]*cond[ (]+[<]+[a-z]+[ ]+[0-9]+[ ][))]$",codigo) || evaluate("^[(][ ]cond[ ]+[(]+[>]+[ ]+[a-z]+[ ]+[0-9]+[)]+[ ][)]$",codigo) || evaluate("^[(][ ]cond[ (]+[<=]+[a-z]+[ ]+[0-9]+[ ][)]$",codigo) || evaluate("^[(][ ]cond[ (]+[>=]+[a-z]+[ ]+[0-9]+[ ][)]$",codigo) || evaluate("^[(][ ]cond[ (]+[equal]+[a-z]+[ ]+[0-9]+[ ][)]$",codigo)){ //Declarar condicionales if
-            System.out.println("Hecho");
-           
-            if (condiciones.siescondicional(codigo, valores.getDatos() ) == true){
-                
-            }
-
-        }
-        //numeros
-        if (evaluate("^[(][ ]*cond[ ]*[(]+[>]+[ ]*[0-9]+[ ]+[0-9]+[ ]*[))]",codigo) || evaluate("^[(][ ]*cond[ ]*[(]+[<]+[ ][0-9]+[ ]+[0-9]+[ ][))]$",codigo) || evaluate("^[(][ ]cond[ (]+[<=]+[0-9]+[ ]+[0-9]+[ ][)]$",codigo) || evaluate("^[(][ ]cond[ (]+[>=]+[0-9]+[ ]+[0-9]+[ ][)]$",codigo) || evaluate("^[(][ ]cond[ (]+[equal]+[0-9]+[ ]+[0-9]+[ ][)]$",codigo)){ //Declarar condicionales if
-        
-            if (condiciones.siescondicional(codigo, valores.getDatos()) == true){
-            }
-
-        }
-
-        if (evaluate("^[(][ ]and[ ]+[a-z]+[ ]+[0-9]+[ ][)]$",codigo)){ //Declarar and 
-
-        }
-
-        
-        if (evaluate("^[(][ ]or[ ]+[a-z]+[ ]+[0-9]+[ ][)]$",codigo)){ //  si las dos funciones cumplen or statement
-
-        }
-
-        
-        if (evaluate("^[(][ ]else[ ]+[a-z]+[ ]+[0-9]+[ ][)]$",codigo)){ // Si las funciones else por otro lado
-
         }
 
         return ejecucion;

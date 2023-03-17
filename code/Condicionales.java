@@ -1,4 +1,5 @@
 import java.util.LinkedList;
+
 import java.util.HashMap;
 
 
@@ -68,7 +69,7 @@ public class Condicionales{
         
        
             condicional = true;//recursividad
-        if(Condition.contains("cond") |getContador() > 1){
+        if(Condition.contains("cond") || Condition.contains("and") || Condition.contains("cond") ||getContador() > 1){
                 for (int i = 0; i < Condition.length(); i++) {
                     if (Condition.charAt(i) == parentesis) {
                        setContador(contador++);  
@@ -84,7 +85,7 @@ public class Condicionales{
                 System.out.println("key: " + i + " value: " + variables.get(i));
                 
                 if (Condition.contains(i)){
-                   Condition = Condition.replace(i, "53");
+                   Condition = Condition.replace(i, Integer.toString(variables.get(i)));
                 }
     
               }
@@ -100,16 +101,18 @@ public class Condicionales{
             }
 
           }
-                evaluarand();
+                evaluarand(Condition);
                 evaluaror();
-                operadoreslogicos(Condition);
+                if (!Condition.contains("and") && !Condition.contains("or")){
+                    operadoreslogicos(Condition);
+                }
+                
             condicional = true;
         }
         else{
             condicional = false;
         }
         //Espacio en caso de que haya un else
-        
         
         
 
@@ -119,16 +122,18 @@ public class Condicionales{
         
     }
 
-    public boolean evaluarand(){
+    public boolean evaluarand(String statement){
         String listaString2[];
         boolean resultado = true;
-        String valor = estackcondicion.peekLast();
-        if (valor.contains("and")){
-            valor.replace("and", "");
-            listaString2 = valor.split(")", 2);
+       
+        if (statement.contains("and")){
+            statement = statement.replace("and ", "");
+            statement = statement.replace("cond", "");
+            statement = statement.replace(") (", "/");
+            listaString2 = statement.split("/");
            
 
-            if(operadoreslogicos(listaString2[1]) && operadoreslogicos(listaString2[2])){
+            if(operadoreslogicos(listaString2[0]) && operadoreslogicos(listaString2[1])){
                 resultado = true;
             }
             else{
@@ -167,65 +172,67 @@ public class Condicionales{
         String listaString2[];
         boolean resultado = true;
         if (valoreslogivcos.contains("<=")){ // (<= 3 3) 
-            listaString2 = valoreslogivcos.split(" ", 2);
+            valoreslogivcos = valoreslogivcos.replace("cond (", "");
+            listaString2 = valoreslogivcos.split(" ", 3);
             listaString2[0] = listaString2[0].replace("(", "");
             listaString2[listaString2.length-1] = listaString2[listaString2.length-1].replace(")", "");
-            if(Integer.valueOf(listaString2[1]) <= Integer.valueOf(listaString2[2])){
-             resultado = true;
+            if(Integer.valueOf(listaString2[1]) > Integer.valueOf(listaString2[2])){
+                resultado = true;
+                System.out.println("Verdadero");
             }
             else{
                 resultado = false;
+                System.out.println("Falso");
             }
-
-        }
+    }
         
-        if (valoreslogivcos.contains("<")){
-            if (valoreslogivcos.contains("<")){ // (<= 3 3) 
-                listaString2 = valoreslogivcos.split(" ", 2);
-                listaString2[0] = listaString2[0].replace("(", "");
-                listaString2[listaString2.length-1] = listaString2[listaString2.length-1].replace(")", "");
-                if(Integer.valueOf(listaString2[1]) < Integer.valueOf(listaString2[2])){
-                 resultado = true;
-                }
-                else{
-                    resultado = false;
-                }
+        if (valoreslogivcos.contains("<")){ // (<= 3 3) 
+            valoreslogivcos = valoreslogivcos.replace("cond (", "");
+            listaString2 = valoreslogivcos.split(" ", 3);
+            listaString2[0] = listaString2[0].replace("(", "");
+            listaString2[listaString2.length-1] = listaString2[listaString2.length-1].replace(")", "");
+            if(Integer.valueOf(listaString2[1]) > Integer.valueOf(listaString2[2])){
+                resultado = true;
+                System.out.println("Verdadero");
+            }
+            else{
+                resultado = false;
+                System.out.println("Falso");
+            }
+    }
+        if (valoreslogivcos.contains(">=")){ // (<= 3 3) 
+            valoreslogivcos = valoreslogivcos.replace("cond (", "");
+            listaString2 = valoreslogivcos.split(" ", 3);
+            listaString2[0] = listaString2[0].replace("(", "");
+            listaString2[listaString2.length-1] = listaString2[listaString2.length-1].replace(")", "");
+            if(Integer.valueOf(listaString2[1]) > Integer.valueOf(listaString2[2])){
+                resultado = true;
+                System.out.println("Verdadero");
+            }
+            else{
+                resultado = false;
+                System.out.println("Falso");
+            }
+    }
+        
+        if (valoreslogivcos.contains(">")){ // (<= 3 3) 
+            valoreslogivcos = valoreslogivcos.replace("cond (", "");
+            listaString2 = valoreslogivcos.split(" ", 3);
+            listaString2[0] = listaString2[0].replace("(", "");
+            listaString2[listaString2.length-1] = listaString2[listaString2.length-1].replace(")", "");
+            if(Integer.valueOf(listaString2[1]) > Integer.valueOf(listaString2[2])){
+                resultado = true;
+                System.out.println("Verdadero");
+            }
+            else{
+                resultado = false;
+                System.out.println("Falso");
+            }
+    }
 
-        }
-        }
-        if (valoreslogivcos.contains(">=")){
-            if (valoreslogivcos.contains(">=")){ // (<= 3 3) 
-                listaString2 = valoreslogivcos.split(" ", 2);
-                listaString2[0] = listaString2[0].replace("(", "");
-                listaString2[listaString2.length-1] = listaString2[listaString2.length-1].replace(")", "");
-                if(Integer.valueOf(listaString2[1]) >= Integer.valueOf(listaString2[2])){
-                 resultado = true;
-                }
-                else{
-                    resultado = false;
-                }
-
-        }
-        }
-        if (valoreslogivcos.contains(">")){
-            if (valoreslogivcos.contains(">")){ // (<= 3 3) 
-                valoreslogivcos = valoreslogivcos.replace("cond (", "");
-                listaString2 = valoreslogivcos.split(" ", 3);
-                listaString2[0] = listaString2[0].replace("(", "");
-                listaString2[listaString2.length-1] = listaString2[listaString2.length-1].replace(")", "");
-                if(Integer.valueOf(listaString2[1]) > Integer.valueOf(listaString2[2])){
-                 resultado = true;
-                 System.out.println("Verdadero");
-                }
-                else{
-                    resultado = false;
-                    System.out.println("Falso");
-                }
-        }
-
-        }
+        
         if (valoreslogivcos.contains("EQ")){
-            if (valoreslogivcos.contains("EQ")){ // (<= 3 3) 
+            if (valoreslogivcos.contains("EQ")){ // (== 3 3) 
                 listaString2 = valoreslogivcos.split(" ", 2);
                 listaString2[0] = listaString2[0].replace("(", "");
                 listaString2[listaString2.length-1] = listaString2[listaString2.length-1].replace(")", "");
@@ -245,4 +252,3 @@ public class Condicionales{
   
   
   }
-  
