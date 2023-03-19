@@ -2,7 +2,9 @@ import java.util.LinkedList;
 
 import java.util.HashMap;
 
+//  (cond ((< x 0) (-x)) ((> x 0) x) (t 0)))
 
+//if if else else
 
 public class Condicionales{
     private LinkedList<String> estackcondicion;
@@ -75,36 +77,34 @@ public class Condicionales{
 
     public boolean siescondicional( String Condition, HashMap<String, Integer> variables){
         boolean condicional = true;
-        char parentesis = '(';
-        char parentesisderecha = ')';
+
         
         
        
             condicional = true;//recursividad
             if(Condition.contains("cond") || Condition.contains("and") || Condition.contains("or") ||getContador() > 1){
-                for (int i = 0; i < Condition.length(); i++) {
-                    if (Condition.charAt(i) == parentesis) {
-                       setContador(contador++);  
-                    }
-                    if (Condition.charAt(i) == parentesisderecha) {
-                        setContador(contador--);
-                        
-                    }
-            
-
-            }
-            for (String i : variables.keySet()) {
-                System.out.println("key: " + i + " value: " + variables.get(i));
                 
-                if (Condition.contains(i)){
+            for (String i : variables.keySet()) {
+                
+                if (Condition.contains(i)){ //reemplaza la variable
                    Condition = Condition.replace(i, Integer.toString(variables.get(i)));
                 }
-    
               }
-            listaString = Condition.split("cond");
-                setContador(contador--);
+            Condition = Condition.replace("(cond", "");
+            Condition = Condition.replace("))", "#");
+            Condition = Condition.replace("t", "#");
+            listaString = Condition.split("#");
+           
                 
-                estackcondicion.push(listaString[0]); //Solo mete los datos a la pila
+            for (int i = 0; i < listaString.length-2; i++){
+                String[] listaStringparameter;
+                listaString[i] = listaString[i].replace(")", "#");
+                listaStringparameter = listaString[i].split("#");
+                estackcondicion.push(listaStringparameter[0]);
+               
+                estackcondicion.push(listaStringparameter[1]);
+               
+                } //Solo mete los datos a la pila
                 for (String i : variables.keySet()) {
             
             
@@ -113,11 +113,14 @@ public class Condicionales{
             }
 
           }
-                evaluarand(Condition);
+          for (int e = 0; e < estackcondicion.size() ; e++){
+                evaluarand(estackcondicion.peekLast());
                 evaluaror();
                 if (!Condition.contains("and") && !Condition.contains("or")){
-                    operadoreslogicos(Condition);
+                    operadoreslogicos(estackcondicion.peekLast());
                 }
+                estackcondicion.remove();
+            }
                 
             condicional = true;
         }
@@ -199,8 +202,8 @@ public class Condicionales{
     }
         
         if (valoreslogivcos.contains("<")){ // (<= 3 3) 
-            valoreslogivcos = valoreslogivcos.replace("cond (", "");
-            listaString2 = valoreslogivcos.split(" ", 3);
+            valoreslogivcos =valoreslogivcos.trim();
+            listaString2 = valoreslogivcos.split(" ");
             listaString2[0] = listaString2[0].replace("(", "");
             listaString2[listaString2.length-1] = listaString2[listaString2.length-1].replace(")", "");
             if(Integer.valueOf(listaString2[1]) < Integer.valueOf(listaString2[2])){
