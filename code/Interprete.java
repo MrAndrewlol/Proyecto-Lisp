@@ -31,12 +31,16 @@ public class Interprete {
             if (codigo != null || codigo.length() != 0) {
                 codigo = codigo.substring(1,codigo.length()-1);
                 codigo = codigo.replace("display", "");
-                codigo = codigo.replace("\"","" ).trim();
-                System.out.println(interpretar(codigo));
+                if (codigo.contains("\""))
+                    System.out.println(codigo);
+                else 
+                    codigo = codigo.replace("\"","" ).trim();
+                    System.out.println(interpretar(codigo));
             }
         }else if (evaluate("^[(][ ]*define[ ]*[(]", codigo)){
 
             funcion.crearFuncion(codigo, valores.getFunciones(), valores.getParamCod());
+            System.out.println("\n");
 
         }else if (evaluate("^[(][ ]*[atom,equal,list]*[ ]+", codigo)){
             System.out.println(predicame.hacerPredicado(codigo));
@@ -64,8 +68,8 @@ public class Interprete {
                     HashMap<ArrayList<String>,String> parametros = valores.getFunciones().get(key);
                     for (ArrayList<String> llave : parametros.keySet()) {
                         code = parametros.get(llave);
+                        int j = 0;
                         for (int i = 1; i < FuncionPartes.length; i++){
-                            int j = 0;
                             code = code.replace(llave.get(j), FuncionPartes[i]);
                             j++;
                         }
