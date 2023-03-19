@@ -119,7 +119,8 @@ public class Condicionales{
                 if (!Condition.contains("and") && !Condition.contains("or")){
                     operadoreslogicos(estackcondicion.peekLast());
                 }
-                estackcondicion.remove();
+                estackcondicion.removeLast();
+                estackcondicion.removeLast();
             }
                 
             condicional = true;
@@ -234,7 +235,8 @@ public class Condicionales{
             }
     }
         
-        if (valoreslogivcos.contains(">")){ // (<= 3 3) 
+        if (valoreslogivcos.contains(">")){ // (<= 3 3)
+            valoreslogivcos = valoreslogivcos.trim(); 
             valoreslogivcos = valoreslogivcos.replace("cond (", "");
             listaString2 = valoreslogivcos.split(" ", 3);
             listaString2[0] = listaString2[0].replace("(", "");
