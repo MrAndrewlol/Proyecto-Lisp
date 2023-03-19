@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.ArrayList;
 
 public class Aritmetica {
 
@@ -6,10 +7,12 @@ public class Aritmetica {
 
     private int resultado;
     private int result;
+    private ArrayList<Integer> resultados;
 
     public Aritmetica() {
         resultado = 0;
         result = 1;
+        resultados = new ArrayList<Integer>();
     }
 
     public int getResultado() {
@@ -59,6 +62,10 @@ public class Aritmetica {
                 s = String.valueOf(c);
                 stack.push(s);
 
+            } else if (c == '('){
+                resultados.add(resultado);
+                setResult(1);
+                setResultado(0);
             } else {
                 if (c == '+') {
                     suma(stack, resultado, map);
@@ -73,7 +80,7 @@ public class Aritmetica {
         }
         
 
-        return resultado;
+        return resultados.get(0);
     }
     
     public void suma(Stack<String> stack, int resultado, HashMap<String, Integer> map) {
@@ -92,7 +99,10 @@ public class Aritmetica {
                         resultado = valor + resultado;
                     }
                 }
-                
+            } else if (resultados.size() >= 2){
+                resultado = resultados.get(0) + resultados.get(1);
+                resultados.remove(0);
+                resultados.remove(0);
             } else {
                 ejecucion = false;
             }
@@ -110,7 +120,10 @@ public class Aritmetica {
             if (cha.matches("[0-999]*") && cha != ""){
                 int valor = Integer.valueOf(stack.peek());
                 stack.pull();
-                resultado = valor - resultado;
+                if (result == 1)
+                    result = valor - result;
+                else 
+                    result = result - valor;
             } else {
                 ejecucion = false;
             }
@@ -144,7 +157,10 @@ public class Aritmetica {
             if (cha.matches("[0-999]*")){
                 int valor = Integer.valueOf(stack.peek());
                 stack.pull();
-                result = valor / result;
+                if (result == 1)
+                    result = valor / result;
+                else 
+                    result = result/valor;
             } else {
                 ejecucion = false;
             }
