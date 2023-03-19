@@ -208,11 +208,15 @@ public class Condicionales{
             listaString2[listaString2.length-1] = listaString2[listaString2.length-1].replace(")", "");
             if(Integer.valueOf(listaString2[1]) < Integer.valueOf(listaString2[2])){
                 resultado = true;
-                System.out.println("Verdadero es mayor que " + listaString2[1]);
+                System.out.println(estackcondicion.peekFirst());
+                estackcondicion.remove();
+                estackcondicion.remove();
             }
             else{
                 resultado = false;
-                System.out.println("Falso es menor que" + listaString2[1]);
+                System.out.println(listaString[listaString.length-2]);
+                
+                
             }
     }
         if (valoreslogivcos.contains(">=")){ // (<= 3 3) 
