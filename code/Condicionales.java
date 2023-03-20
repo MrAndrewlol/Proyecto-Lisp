@@ -9,21 +9,21 @@ import java.util.HashMap;
 public class Condicionales{
     private LinkedList<String> estackcondicion;
     private String[] listaString;
-    private int contador;
+    private String respuesta;
   
     public Condicionales(){
         estackcondicion = new LinkedList<String>();
         listaString = new String[3];
-        contador = 0;   
+        respuesta = "";   
       }
   
   
   
 
-    public Condicionales(LinkedList<String> estackcondicion, String[] listaString, int contador) {
+    public Condicionales(LinkedList<String> estackcondicion, String[] listaString, String contador) {
         this.estackcondicion = estackcondicion;
         this.listaString = listaString;
-        this.contador = contador;
+        this.respuesta = contador;
     }
     
     
@@ -48,12 +48,12 @@ public class Condicionales{
     /** 
      * @return int
      */
-    public int getContador() {
-        return this.contador;
+    public String getContador() {
+        return this.respuesta;
     }
 
-    public void setContador(int contador) {
-        this.contador = contador;
+    public void setContador(String contador) {
+        this.respuesta = contador;
     }
 
     /** 
@@ -82,7 +82,7 @@ public class Condicionales{
         
        
             condicional = true;//recursividad
-            if(Condition.contains("cond") || Condition.contains("and") || Condition.contains("or") ||getContador() > 1){
+            if(Condition.contains("cond") || Condition.contains("and") || Condition.contains("or") ){
                 
             for (String i : variables.keySet()) {
                 
@@ -94,6 +94,7 @@ public class Condicionales{
             Condition = Condition.replace("))", "#");
             Condition = Condition.replace("t", "#");
             listaString = Condition.split("#");
+            setContador(listaString[listaString.length-2]);
            
                 
             for (int i = 0; i < listaString.length-2; i++){
@@ -133,7 +134,7 @@ public class Condicionales{
         
 
 
-            
+        System.out.println(getContador());    
         return condicional;
         
     }
@@ -187,18 +188,21 @@ public class Condicionales{
     public boolean operadoreslogicos(String valoreslogivcos ){ // <= >= < > =
         String listaString2[];
         boolean resultado = true;
+        
         if (valoreslogivcos.contains("<=")){ // (<= 3 3) 
-            valoreslogivcos = valoreslogivcos.replace("cond (", "");
-            listaString2 = valoreslogivcos.split(" ", 3);
+            valoreslogivcos =valoreslogivcos.trim();
+            listaString2 = valoreslogivcos.split(" ");
             listaString2[0] = listaString2[0].replace("(", "");
             listaString2[listaString2.length-1] = listaString2[listaString2.length-1].replace(")", "");
             if(Integer.valueOf(listaString2[1]) <= Integer.valueOf(listaString2[2])){
                 resultado = true;
-                System.out.println("Verdadero es mayor que " + listaString2[1]);
+                setContador(estackcondicion.peekFirst().trim());
             }
             else{
                 resultado = false;
-                System.out.println("Falso es menor que" + listaString2[1]);
+                if (getContador().equals(listaString[listaString.length-2])){
+                    setContador(listaString[listaString.length-2]);
+                }
             }
     }
         
@@ -209,52 +213,57 @@ public class Condicionales{
             listaString2[listaString2.length-1] = listaString2[listaString2.length-1].replace(")", "");
             if(Integer.valueOf(listaString2[1]) < Integer.valueOf(listaString2[2])){
                 resultado = true;
-                System.out.println(estackcondicion.peekFirst());
+                setContador(estackcondicion.peekFirst().trim());
                 estackcondicion.remove();
                 estackcondicion.remove();
             }
             else{
                 resultado = false;
-                System.out.println(listaString[listaString.length-2]);
+                if (getContador() == (listaString[listaString.length-2])){
+                    setContador(listaString[listaString.length-2]);
+                }
                 
-                
+
             }
     }
         if (valoreslogivcos.contains(">=")){ // (<= 3 3) 
-            valoreslogivcos = valoreslogivcos.replace("cond (", "");
-            listaString2 = valoreslogivcos.split(" ", 3);
+            valoreslogivcos =valoreslogivcos.trim();
+            listaString2 = valoreslogivcos.split(" ");
             listaString2[0] = listaString2[0].replace("(", "");
             listaString2[listaString2.length-1] = listaString2[listaString2.length-1].replace(")", "");
             if(Integer.valueOf(listaString2[1]) >= Integer.valueOf(listaString2[2])){
                 resultado = true;
-                System.out.println("Verdadero es mayor que " + listaString2[1]);
+                setContador(estackcondicion.peekFirst().trim());
             }
             else{
                 resultado = false;
-                System.out.println("Falso es menor que" + listaString2[1]);
+                if (getContador().equals(listaString[listaString.length-2])){
+                    setContador(listaString[listaString.length-2]);
+                }
             }
     }
         
         if (valoreslogivcos.contains(">")){ // (<= 3 3)
-            valoreslogivcos = valoreslogivcos.trim(); 
-            valoreslogivcos = valoreslogivcos.replace("cond (", "");
-            listaString2 = valoreslogivcos.split(" ", 3);
+            valoreslogivcos =valoreslogivcos.trim();
+            listaString2 = valoreslogivcos.split(" ");
             listaString2[0] = listaString2[0].replace("(", "");
             listaString2[listaString2.length-1] = listaString2[listaString2.length-1].replace(")", "");
             if(Integer.valueOf(listaString2[1]) > Integer.valueOf(listaString2[2])){
                 resultado = true;
-                System.out.println("Verdadero es mayor que " + listaString2[1]);
+                setContador(estackcondicion.peekFirst().trim());
             }
             else{
                 resultado = false;
-                System.out.println("Falso es menor que" + listaString2[1]);
+                if (getContador().equals(listaString[listaString.length-2])){
+                    setContador(listaString[listaString.length-2]);
+                }
             }
     }
 
         
         
 
-        
+       
         return resultado;
         
     }
