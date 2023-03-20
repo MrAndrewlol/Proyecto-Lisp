@@ -206,7 +206,7 @@ public class Condicionales{
             }
     }
         
-        if (valoreslogivcos.contains("<")){ // (<= 3 3) 
+        if (valoreslogivcos.contains("<")){ // (< 3 3) 
             valoreslogivcos =valoreslogivcos.trim();
             listaString2 = valoreslogivcos.split(" ");
             listaString2[0] = listaString2[0].replace("(", "");

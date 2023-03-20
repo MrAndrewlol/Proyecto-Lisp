@@ -7,22 +7,21 @@ public class Predicados {
      */
     public String hacerPredicado(String codigo) {
         String valor = "";
+        codigo = codigo.substring(1, codigo.length()-1).trim();
         
         
         if (codigo.contains("atom")){
-            String[] listastringatomd = codigo.split("atom");
-            String codigodelista = listastringatomd[0];
+            codigo.replaceAll("atom", "");
   
-            if (codigodelista.contains("("))
-                valor = "#T";
-            else 
+            if (codigo.contains("("))
                 valor = "NIL";
+            else 
+                valor = "#T";
 
         } else if (codigo.contains("list")){
-            String[] listastringatomd = codigo.split("list");
-            String codigodelista = listastringatomd[0];
+            codigo.replaceAll("list", "");
             
-            if (codigodelista.contains("("))
+            if (codigo.contains("("))
                 valor = "#T";
             else 
                 valor = "NIL";
