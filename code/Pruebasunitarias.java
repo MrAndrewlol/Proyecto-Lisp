@@ -12,14 +12,14 @@ public class Pruebasunitarias {
  // Condicionales
     @Test
     public void siescondicionalpacalcu(){
-        boolean resultado = condiciones.siescondicional("(cond (< 4 5))", valores.getDatos());
+        boolean resultado = condiciones.siescondicional("(cond ((< 5 0) (-5)) ((> 5 0) 5) (t 0)))", valores.getDatos());
         assertEquals(true,resultado);
     }
 
     @Test
     public void evaluarand(){
-        boolean resultado = condiciones.evaluarand("(and (= 2 2) (< 4 5))");
-        assertEquals(true, resultado);
+        boolean resultado = condiciones.evaluarand("(and (> 2 3) (< 4 5))");
+        assertEquals(false, resultado);
     }
 
     @Test 
