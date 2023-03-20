@@ -1,0 +1,5 @@
+//Un pequeño programa ejecutándose en el ambiente Lisp implementado por el grupo. Debe contener
+//solamente funcionalidad básica del lenguaje. Subirlo a Canvas.
+
+//condicionales
+(cond ((< 5 0) (-5)) ((> 5 0) 5) (t 0)))
