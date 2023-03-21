@@ -48,9 +48,9 @@ public class Interprete {
         }
         else if (evaluate("^[(][ ]*cond[ ]*[(]",codigo) || evaluate("^[(][ ]*and[ ]*[(]",codigo) || evaluate("^[(][ ]*or[ ]*[(]",codigo)){ //Declarar condicionales if
            
-            if (condiciones.siescondicional(codigo, valores.getDatos() ) == true){
+            interpretar("(" + condiciones.siescondicional(codigo, valores.getDatos())+ "))"); 
 
-            }
+            
 
         }else if (evaluate("^[(][ ]*QUOTE", codigo)){
             if (codigo.contains("QUOTE")){
@@ -90,6 +90,9 @@ public class Interprete {
             Aritmetica operaciones = new Aritmetica();
                 int operacion = operaciones.operar(codigo, valores.getDatos());
                 ejecucion = String.valueOf(operacion);
+
+        } else if (evaluate("[0-9]*", codigo)){
+            System.out.println(codigo); 
 
         }else {
             System.out.println("ERROR: LINEA DE CODIGO IRRECONOCIBLE");

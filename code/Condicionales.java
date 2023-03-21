@@ -75,7 +75,7 @@ public class Condicionales{
         this.listaString = listaString;
     }
 
-    public boolean siescondicional( String Condition, HashMap<String, Integer> variables){
+    public String siescondicional( String Condition, HashMap<String, Integer> variables){
         boolean condicional = true;
 
         
@@ -131,11 +131,8 @@ public class Condicionales{
         }
         //Espacio en caso de que haya un else
         
-        
-
-
-        System.out.println(getContador());    
-        return condicional;
+          
+        return getContador();
         
     }
 

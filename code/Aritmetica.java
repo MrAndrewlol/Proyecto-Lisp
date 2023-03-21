@@ -120,10 +120,10 @@ public class Aritmetica {
             if (cha.matches("[0-999]*") && cha != ""){
                 int valor = Integer.valueOf(stack.peek());
                 stack.pull();
-                if (result == 1)
-                    result = valor - result;
+                if (resultado == 0)
+                    resultado = valor - resultado;
                 else 
-                    result = result - valor;
+                    resultado = resultado - valor;
             } else {
                 ejecucion = false;
             }

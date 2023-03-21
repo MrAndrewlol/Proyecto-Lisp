@@ -12,8 +12,8 @@ public class Pruebasunitarias {
  // Condicionales
     @Test
     public void siescondicionalpacalcu(){
-        boolean resultado = condiciones.siescondicional("(cond ((< 5 0) (-5)) ((> 5 0) 5) (t 0)))", valores.getDatos());
-        assertEquals(true,resultado);
+        String resultado = condiciones.siescondicional("(cond ((< 5 0) (-5)) ((> 5 0) 5) (t 0)))", valores.getDatos());
+        assertEquals(5,resultado);
     }
 
     @Test
