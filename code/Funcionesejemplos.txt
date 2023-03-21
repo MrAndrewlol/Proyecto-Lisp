@@ -3,3 +3,24 @@
 
 //condicionales
 (cond ((< 5 0) (-5)) ((> 5 0) 5) (t 0)))
+
+//Aritmetica
+(display (+ 5 2))
+(display (+ 5 8 30))
+(display (+ (/ 6 3) (* 2 8))
+
+//Variables
+(set! variable 2)
+(+ variable 4)
+
+//Predicados
+(atom (3,4,5,7))
+(atom 4)
+
+(list (3,4,5,7))
+(list 4)
+
+//Funciones 
+(define (operacion uno dos tres)
+(display (+ uno dos tres)))
+
