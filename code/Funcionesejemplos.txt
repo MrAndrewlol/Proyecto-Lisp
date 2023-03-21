@@ -7,7 +7,7 @@
 //Aritmetica
 (display (+ 5 2))
 (display (+ 5 8 30))
-(display (+ (/ 6 3) (* 2 8))
+(display (+ (/ 6 3) (* 2 8)))
 
 //Variables
 (set! variable 2)
